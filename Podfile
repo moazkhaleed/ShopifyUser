@@ -9,7 +9,8 @@ target 'ShopifyUser' do
 
 	pod 'Kingfisher'
 	pod 'ReachabilitySwift'
-	pod 'Alamofire'
+        pod 'Alamofire'
+	
 
 
 

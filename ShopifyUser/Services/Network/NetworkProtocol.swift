@@ -1,12 +1,14 @@
 //
-//  NetworkProtocol.swift
-//  ShopifyUser
+//  Network.swift
+//  ShopifyCustomer
 //
-//  Created by Moaz Khaled on 04/06/2023.
+//  Created by Mac on 07/06/2023.
 //
 
 import Foundation
-
 protocol NetworkProtocol{
+    func customerRegister(customer:Customer,compilition: @escaping(Int?) -> Void)
+    func allCustomers(complition:@escaping ((MyCustomer?),Error?) -> Void)
+    
     
 }
