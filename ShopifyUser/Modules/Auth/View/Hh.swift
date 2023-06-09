@@ -15,6 +15,8 @@ class Hh: UIViewController {
         // Do any additional setup after loading the view.
         
         UserDefaults.standard.integer(forKey: "customerId")
+        let userDefultId =  UserDefaults.standard.integer(forKey:"customerId")
+            print("#######", userDefultId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
