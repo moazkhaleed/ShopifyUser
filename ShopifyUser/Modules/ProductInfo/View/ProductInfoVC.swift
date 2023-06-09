@@ -1,13 +1,13 @@
 //
-//  HomeVC.swift
+//  ProductInfoVC.swift
 //  ShopifyUser
 //
-//  Created by Moaz Khaled on 04/06/2023.
+//  Created by Mac on 09/06/2023.
 //
 
 import UIKit
 
-class HomeVC: UIViewController {
+class ProductInfoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

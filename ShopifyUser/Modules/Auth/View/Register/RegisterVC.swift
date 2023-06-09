@@ -29,39 +29,44 @@ class RegisterVC: UIViewController {
         customer.tags = password.text
         confirmPasswordCheck = confirmPassword.text
         
-        if customer.tags == confirmPasswordCheck{
-
-            registerViewModel.registerCustomer(customer: customer)
-        }
-        else{
-            showToast(message: "not matches Password", seconds: 2.0)
-        }
         
-        
-        registerViewModel.bindingSignUp = { [weak self] in
-            DispatchQueue.main.async {
-
-                if self?.registerViewModel.statusCode  == 201{
-
-                    self?.showToast(message: "Account Created", seconds: 2.0)
-                    
-                    let hhVC = self?.storyboard?.instantiateViewController(withIdentifier: "Hh") as! Hh
-                    
-                    hhVC.modalPresentationStyle = .fullScreen
-                    self?.present(hhVC , animated: true, completion: nil)
-                    
-                } else if self?.registerViewModel.statusCode == 422{
-                    self?.showToast(message: "Already Exist", seconds: 2.0)
-                }
-                else{
-                    self?.showToast(message: "Check your Data", seconds: 2.0)
-                }
-
+        if password.text!.isPasswordContainsLettersAndNumbers == false {
+            self.showToast(message: "Password must contain 6 characters at least and it should contains one number and both lower and uppercase letters and special characters", seconds: 2.0)
+        }else{
+            
+            if customer.tags == confirmPasswordCheck{
+                
+                registerViewModel.registerCustomer(customer: customer)
             }
-
+            else{
+                showToast(message: "not matches Password", seconds: 2.0)
+            }
+            
+            
+            registerViewModel.bindingSignUp = { [weak self] in
+                DispatchQueue.main.async {
+                    
+                    if self?.registerViewModel.statusCode  == 201{
+                        
+                        self?.showToast(message: "Account Created", seconds: 2.0)
+                        
+                        let hhVC = self?.storyboard?.instantiateViewController(withIdentifier: "Hh") as! Hh
+                        
+                        hhVC.modalPresentationStyle = .fullScreen
+                        self?.present(hhVC , animated: true, completion: nil)
+                        
+                    } else if self?.registerViewModel.statusCode == 422{
+                        self?.showToast(message: "Already Exist", seconds: 2.0)
+                    }
+                    else{
+                        self?.showToast(message: "Check your Data", seconds: 2.0)
+                    }
+                    
+                }
+                
+            }
+            
         }
-        
-        
         
     }
     
@@ -87,6 +92,10 @@ class RegisterVC: UIViewController {
                 alert.dismiss(animated: true)
             }
         }
+    
+
 
 
 }
+
+
