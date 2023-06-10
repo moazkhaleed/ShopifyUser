@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Alamofire
 
 
 class Network : NetworkProtocol{
-    
+  
 }
+

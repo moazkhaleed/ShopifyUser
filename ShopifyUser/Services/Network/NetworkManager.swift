@@ -1,21 +1,17 @@
 //
-//  NetworkProtocol.swift
+//  NetworkManager.swift
 //  ShopifyUser
 //
-//  Created by Moaz Khaled on 04/06/2023.
+//  Created by Mac on 09/06/2023.
 //
 
 import Foundation
+import Alamofire
 
-protocol NetworkProtocol{
-    
+protocol NetworkServicing{
     
     func getDataOverNetwork<T:Decodable>(tag :String,endPoint : EndPoint, compilitionHandler: @escaping (T?) -> Void)
-    
 }
-
-
-
 
 class NetworkManager : NetworkServicing{
     
@@ -31,7 +27,7 @@ class NetworkManager : NetworkServicing{
             "X-RapidAPI-Host": "tasty.p.rapidapi.com"
         ]
         
-        AF.request("\(baseUrl)\(endPoint.rawValue)\(tag)", method: .get, headers: header).responseJSON{ response in
+        Alamofire.request("\(baseUrl)\(endPoint.rawValue)\(tag)", method: .get, headers: header).responseJSON{ response in
             print(response)
             do{
                 let result = try JSONDecoder().decode(T.self, from: response.data ?? Data())
